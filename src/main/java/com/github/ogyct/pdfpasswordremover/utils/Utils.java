@@ -4,17 +4,27 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class Utils {
-	private Utils() {
-		// Not to be instantiated
-	}
+    private static final String DIALOG = "Dialog";
 
-	/**
-	 * Error processing
-	 * 
-	 * @param e
-	 */
-	public static void processError(Exception e) {
-		e.printStackTrace();
-		JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Dialog", JOptionPane.ERROR_MESSAGE);
-	}
+    private Utils() {
+        // Not to be instantiated
+    }
+
+    /**
+     * Error processing
+     * 
+     * @param e
+     */
+    public static void processError(Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), DIALOG, JOptionPane.ERROR_MESSAGE);
+    }
+
+    /**
+     * Display information message
+     * @param message
+     */
+    public static void processInformationMessage(String message) {
+        JOptionPane.showMessageDialog(new JFrame(), message, DIALOG, JOptionPane.INFORMATION_MESSAGE);
+    }
 }

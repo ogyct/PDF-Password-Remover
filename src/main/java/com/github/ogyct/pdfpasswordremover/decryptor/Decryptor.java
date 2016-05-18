@@ -54,7 +54,8 @@ public class Decryptor {
                 decrypt(path);
             }
         }
-        Utils.processInformationMessage("Successfully saved to " + path);
+        //TODO fix info message
+        //Utils.processInformationMessage("Successfully saved to " + path);
     }
 
     /**

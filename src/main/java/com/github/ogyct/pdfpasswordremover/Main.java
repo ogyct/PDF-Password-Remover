@@ -1,39 +1,41 @@
 package com.github.ogyct.pdfpasswordremover;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.awt.EventQueue;
 
-import org.apache.pdfbox.pdfparser.PDFParser;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.encryption.StandardDecryptionMaterial;
+import javax.swing.UIManager;
 
+import com.github.ogyct.pdfpasswordremover.actionlisteners.ChooseDirectoryListener;
+import com.github.ogyct.pdfpasswordremover.actionlisteners.RemovePasswordListener;
+import com.github.ogyct.pdfpasswordremover.decryptor.Decryptor;
+import com.github.ogyct.pdfpasswordremover.gui.GUI;
 import com.github.ogyct.pdfpasswordremover.utils.Utils;
 
+/**
+ * Program starts here
+ * @author avgustisd
+ *
+ */
 public class Main {
 
-	public static void main(String[] args) {
-		try {
-			File file = new File("1.pdf");
-			InputStream is = new FileInputStream(file);
-			PDFParser parser = new PDFParser(is);
-			parser.parse();
-			
-			PDDocument originialPdfDoc = parser.getPDDocument();
-			originialPdfDoc.setAllSecurityToBeRemoved(true);
-			
-			boolean isOriginalDocEncrypted = originialPdfDoc.isEncrypted();
-	        if (isOriginalDocEncrypted) {
-	            originialPdfDoc.openProtection(new StandardDecryptionMaterial("Pay$l1p"));
-	        }
-	        
-	        new File("decrypted").mkdir();
-	        originialPdfDoc.save("decrypted/12.pdf");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			Utils.processError(e);
-		}
+    public static void main(String[] args) {
+        final Decryptor dec = new Decryptor("", "");
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                    GUI window = new GUI();
+                    window.getFrmPdfPasswordRemover().setVisible(true);
+                    window.getBtnChoose().addActionListener(new ChooseDirectoryListener(window));
+                    window.getBtnRemove().addActionListener(new RemovePasswordListener(window, dec));
+                } catch (Exception e) {
+                    Utils.processError(e);
+                }
+            }
+        });
+        
+        
+    }
 
-	}
+
 
 }
