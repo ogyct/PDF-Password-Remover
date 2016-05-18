@@ -3,10 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.ogyct.pdfpasswordremover</groupId>
 	<artifactId>PDFPasswordRemover</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0-alfa</version>
 	<name>PDFPasswordRemover</name>
 	<description>Tool to remove passwords from pdf</description>
-	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>

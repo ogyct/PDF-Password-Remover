@@ -83,7 +83,7 @@ public class Decryptor {
             new File(decryptedPath).mkdir();
 
             originialPdfDoc.save(decryptedPath + "\\" + name);
-            
+
         } catch (Exception e) {
             Utils.processError(e);
         }

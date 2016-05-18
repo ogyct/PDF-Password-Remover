@@ -32,10 +32,7 @@ public class Main {
                 }
             }
         });
-        
-        
+
     }
-
-
 
 }

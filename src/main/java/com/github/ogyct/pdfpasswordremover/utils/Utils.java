@@ -3,6 +3,11 @@ package com.github.ogyct.pdfpasswordremover.utils;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/**
+ * Contains application wide useful methods
+ * @author avgustisd
+ *
+ */
 public class Utils {
     private static final String DIALOG = "Dialog";
 
